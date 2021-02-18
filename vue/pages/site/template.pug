@@ -1,0 +1,11 @@
+.container-fluid.px-0
+  nav.navbar.navbar-dark.bg-dark
+    .navbar-brand 
+      button.navbar-toggler.px-1.mx-1(type='button' @click="$router.push({name:'home'})")
+        b-icon-arrow90deg-left
+      | recaptcha site-key: {{key}}
+  .d-flex
+    .g-recaptcha(:data-sitekey="key")
+  template(v-if="gRecaptchaResponse")
+    h5 gRecaptchaResponse
+    .alert.alert-success {{ gRecaptchaResponse }}

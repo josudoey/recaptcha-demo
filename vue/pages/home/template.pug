@@ -1,0 +1,8 @@
+.container-fluid.px-0
+  nav.navbar.navbar-dark.bg-dark
+    .navbar-brand recaptcha
+  .d-flex
+    b-input-group(style="width: 400px", prepend="site-key")
+      b-form-input(v-model="siteKey")
+      b-input-group-append(v-if="siteKey")
+        b-btn(variant="primary", @click="go") link
