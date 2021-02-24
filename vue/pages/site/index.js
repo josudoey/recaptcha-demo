@@ -1,4 +1,5 @@
 import template from './template.pug'
+import grecaptcha from './grecaptcha'
 export default {
   template,
   data: () => {
@@ -7,27 +8,20 @@ export default {
     }
   },
   methods: {},
-  created: function () {
-    const recaptchaScript = document.createElement('script')
-    recaptchaScript.setAttribute(
-      'src',
-      'https://www.google.com/recaptcha/api.js'
-    )
-    document.head.appendChild(recaptchaScript)
-
-    recaptchaScript.onload = () => {
-      const self = this
-      self.interval = setInterval(() => {
-        const el = document.getElementById('g-recaptcha-response')
-        if (el && self.gRecaptchaResponse !== el.value) {
-          self.gRecaptchaResponse = el.value
-        }
-      }, 500)
-    }
+  async created () {
+    await grecaptcha.ready()
+    const self = this
+    grecaptcha.render(this.$refs.recaptcha, {
+      sitekey: this.key,
+      callback: (gRecaptchaResponse) => {
+        self.gRecaptchaResponse = gRecaptchaResponse
+      }
+    })
   },
-  mounted: () => {},
+  mounted: async () => {
+
+  },
   destroyed: () => {
-    clearInterval(self.interval)
   },
   computed: {
     key () {

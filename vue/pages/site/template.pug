@@ -5,7 +5,7 @@
         b-icon-arrow90deg-left
       | recaptcha site-key: {{key}}
   .d-flex
-    .g-recaptcha(:data-sitekey="key")
+    .g-recaptcha(ref="recaptcha")
   template(v-if="gRecaptchaResponse")
     h5 gRecaptchaResponse
     .alert.alert-success {{ gRecaptchaResponse }}
