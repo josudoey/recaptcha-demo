@@ -1,10 +1,11 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
+
 const { entry, html, distPath, publicPath } = require('../expose')
 const webpackOutputPath = path.join(distPath, publicPath)
 module.exports = {
@@ -27,13 +28,14 @@ module.exports = {
     },
     minimizer: [
       new TerserPlugin({}),
-      new OptimizeCSSAssetsPlugin({
-        assetNameRegExp: /\.css(\?.+)?$/g,
-        cssProcessor: require('cssnano'),
-        cssProcessorOptions: {
-          presets: ['default', { discardComments: { removeAll: true } }],
-          autoprefixer: { disable: true },
-          canPrint: true
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true }
+            }
+          ]
         }
       })
     ]
