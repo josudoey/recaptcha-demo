@@ -8,6 +8,7 @@ const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 
 const { entry, html, distPath, publicPath } = require('../expose')
 const webpackOutputPath = path.join(distPath, publicPath)
+console.log(webpackOutputPath)
 module.exports = {
   entry: entry,
   resolve: {
@@ -43,7 +44,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.(png|jpe?g|gif|svg)$/,
-      loader: 'file-loader',
+      loader: require.resolve('file-loader'),
       options: {
         outputPath: 'img',
         publicPath: '../img',
@@ -52,7 +53,7 @@ module.exports = {
       }
     }, {
       test: /\.(woff2?|eot|ttf|otf)$/,
-      loader: 'file-loader',
+      loader: require.resolve('file-loader'),
       options: {
         outputPath: 'fonts',
         publicPath: '../fonts',
@@ -61,26 +62,26 @@ module.exports = {
       }
     }, {
       test: /\.html$/,
-      loader: 'html-loader',
+      loader: require.resolve('html-loader'),
       options: {
         minimize: true
       }
     }, {
       test: /render.pug$/,
       use: [{
-        loader: 'pug-loader'
+        loader: require.resolve('pug-loader')
       }]
     }, {
       test: /template.pug$/,
       use: [{
-        loader: 'html-loader',
+        loader: require.resolve('html-loader'),
         options: {
           minimize: {
             collapseBooleanAttributes: true
           }
         }
       }, {
-        loader: 'pug-html-loader',
+        loader: require.resolve('pug-html-loader'),
         options: {
           doctype: 'html'
         }
@@ -89,8 +90,8 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       use: [
-        'cache-loader',
-        'thread-loader'
+        require.resolve('cache-loader'),
+        require.resolve('thread-loader')
       ]
     }, {
       test: /module\.css$/,
@@ -103,7 +104,7 @@ module.exports = {
           }
         }
       }, {
-        loader: 'css-loader',
+        loader: require.resolve('css-loader'),
         options: {
           modules: {
             namedExport: true,
@@ -121,7 +122,7 @@ module.exports = {
           esModule: true
         }
       }, {
-        loader: 'css-loader',
+        loader: require.resolve('css-loader'),
         options: {
           importLoaders: 1
         }

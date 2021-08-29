@@ -7,9 +7,8 @@
     "webpack"
   ],
   "scripts": {
-    "dev": "webpack serve --config webpack/config.dev.js",
-    "build": "NODE_ENV=production webpack --config webpack/config.js",
-    "upgrade": "yarn plugin import interactive-tools&&yarn upgrade-interactive"
+    "dev": "cd webpack&&webpack serve --config ./config.dev.js",
+    "build": "NODE_ENV=production webpack --config webpack/config.js"
   },
   "repository": {
     "type": "git",
@@ -24,14 +23,18 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "bootstrap-vue": "^2.21.2",
-    "eslint": "^7.27.0",
+    "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "npm-check-updates": "^11.8.3",
     "q": "^1.5.1",
-    "vue": "^2.6.12",
-    "vue-router": "^3.5.1",
-    "~webpack": "workspace:webpack"
-  }
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.2",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.0.0",
+    "~webpack": "file:webpack"
+  },
+  "dependencies": {}
 }
