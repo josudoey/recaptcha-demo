@@ -8,7 +8,6 @@ const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
 
 const { entry, html, distPath, publicPath } = require('../expose')
 const webpackOutputPath = path.join(distPath, publicPath)
-console.log(webpackOutputPath)
 module.exports = {
   entry: entry,
   resolve: {
@@ -137,7 +136,7 @@ module.exports = {
     new HtmlWebpackPlugin(Object.assign({}, html, {
       inject: true,
       template: require('html-webpack-template'),
-      filename: '../index.html',
+      filename: './index.html',
       alwaysWriteToDisk: true
     })),
     new HtmlWebpackHarddiskPlugin()

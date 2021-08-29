@@ -1,7 +1,7 @@
 const path = require('path')
 const projectPath = __dirname
 const distPath = path.resolve(projectPath, 'dist')
-const publicPath = './~/'
+const publicPath = './'
 
 module.exports = {
   publicPath,

@@ -4,4 +4,4 @@
 
 ### Demo
 
-線上展示 [demo](https://rawcdn.githack.com/josudoey/recaptcha-demo/9048ccc19463fa20c8d726d13d0ebc9915234ada/dist/index.html)
+線上展示 [demo](https://josudoey.github.io/recaptcha-demo/)
