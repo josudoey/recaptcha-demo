@@ -19,7 +19,7 @@
     "html-webpack-template": "^6.2.0",
     "mini-css-extract-plugin": "^2.2.0",
     "pug": "^3.0.2",
-    "pug-html-loader": "^1.1.5",
+    "pug-html-loader": "git+https://github.com/josudoey/pug-html-loader.git",
     "pug-loader": "^2.4.0",
     "style-loader": "^3.2.1",
     "terser-webpack-plugin": "^5.1.4",
